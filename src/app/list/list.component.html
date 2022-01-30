@@ -1,0 +1,17 @@
+
+<div class="list-container">
+    <div class="list-title">
+        <h2>{{this.list.name}}</h2>
+    </div>
+    
+    <div class="list" cdkDropList [cdkDropListData]="list.tickets" (cdkDropListDropped)="drop($event)">
+        <app-ticket *ngFor="let ticket of list.tickets" [ticket]="ticket" cdkDrag></app-ticket>
+    </div>
+    
+    <form #newitemForm="ngForm" (ngSubmit)="onSubmit(newitemForm)">
+        <mat-form-field class="" appearance="fill">
+            <input matInput type ="text" name="newItem" ngModel type="text" placeholder="Enter a new item">
+        </mat-form-field>
+        <button mat-raised-button type="submit">Add Item</button>
+    </form>
+</div>
